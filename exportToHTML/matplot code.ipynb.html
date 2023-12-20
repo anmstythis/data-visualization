@@ -1,0 +1,153 @@
+<html>
+<head>
+<title>matplot code.ipynb</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7a7e85;}
+.s1 { color: #bcbec4;}
+.s2 { color: #cf8e6d;}
+.s3 { color: #bcbec4;}
+.s4 { color: #6aab73;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+matplot code.ipynb</font>
+</center></td></tr></table>
+<pre><span class="s0">#%% md 
+</span><span class="s1">Цель работы: выполнить визуализацию данных из выбранного датасета в различных форматах: в виде линейного графика, столбчатой диаграммы, круговой диаграммы, диаграммы рассеивания и гистограммы. А также параллельно с выполнением практической работы изучить библиотеку matplotlib, а именно модуль pyplot. 
+</span><span class="s0">#%% md 
+</span><span class="s1">Импорт библиотек, необходимых для практической работы  
+</span><span class="s0">#%% 
+</span><span class="s2">import </span><span class="s1">matplotlib</span><span class="s3">.</span><span class="s1">pyplot </span><span class="s2">as </span><span class="s1">plt</span>
+<span class="s2">import </span><span class="s1">pandas </span><span class="s2">as </span><span class="s1">pd</span>
+<span class="s0">#%% md 
+</span><span class="s1">Чтение CSV-файла, чтобы выводить диаграммы, базируясь на нём 
+</span><span class="s0">#%% 
+</span><span class="s1">char </span><span class="s3">= </span><span class="s1">pd</span><span class="s3">.</span><span class="s1">read_csv</span><span class="s3">(</span><span class="s4">&quot;star_wars_character_dataset - star_wars_character_dataset.csv&quot;</span><span class="s3">)</span>
+<span class="s0">#%% md 
+</span><span class="s1">Вывод таблицы, чтобы было удобнее работать с датасетом. 
+</span><span class="s0">#%% 
+</span><span class="s1">char</span>
+<span class="s0">#%% md 
+</span><span class="s1">Представление первых семи данных о росте, весе и годе рождения персонажей в виде линейного графика 
+</span><span class="s0">#%% md 
+</span><span class="s1">Для того, чтобы составить линейный график по выбранным данным, необходимо вызвать метод plot из библиотеки matplotlib.pyplot (которая была импортирована как plt). В диаграмму был установлен маркер в форме звёздочки размером 10 pt. Для роста был установлен синий цвет, для веса - оранжевый, для года - лаймовый. Для того, чтобы вывести получившийся график в терминал, необходимо вызвать метод show(). Метод legend() необязательный, однако если его не вызвать, то в диаграмму не выведутся названия графиков. 
+</span><span class="s0">#%% md 
+</span><span class="s1">Примечание: в библиотеке matplotlib доступно множество цветов, но не все. Доступные цвета были найдены и изучены в официальной документации этой библиотеки. 
+</span><span class="s0">#%% 
+</span><span class="s1">plt</span><span class="s3">.</span><span class="s1">figure</span><span class="s3">(</span><span class="s1">figsize</span><span class="s3">=(</span><span class="s5">10</span><span class="s3">, </span><span class="s5">5</span><span class="s3">))</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">plot</span><span class="s3">(</span><span class="s1">char</span><span class="s3">[</span><span class="s4">'name'</span><span class="s3">].</span><span class="s1">head</span><span class="s3">(</span><span class="s5">7</span><span class="s3">), </span><span class="s1">char</span><span class="s3">[</span><span class="s4">'height'</span><span class="s3">].</span><span class="s1">head</span><span class="s3">(</span><span class="s5">7</span><span class="s3">), </span><span class="s1">marker</span><span class="s3">=</span><span class="s4">'*'</span><span class="s3">, </span><span class="s1">markersize</span><span class="s3">=</span><span class="s5">10</span><span class="s3">, </span><span class="s1">label</span><span class="s3">=</span><span class="s4">&quot;Рост&quot;</span><span class="s3">, </span><span class="s1">color</span><span class="s3">=</span><span class="s4">'blue'</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">plot</span><span class="s3">(</span><span class="s1">char</span><span class="s3">[</span><span class="s4">'name'</span><span class="s3">].</span><span class="s1">head</span><span class="s3">(</span><span class="s5">7</span><span class="s3">), </span><span class="s1">char</span><span class="s3">[</span><span class="s4">'mass'</span><span class="s3">].</span><span class="s1">head</span><span class="s3">(</span><span class="s5">7</span><span class="s3">), </span><span class="s1">marker</span><span class="s3">=</span><span class="s4">'*'</span><span class="s3">, </span><span class="s1">markersize</span><span class="s3">=</span><span class="s5">10</span><span class="s3">, </span><span class="s1">label</span><span class="s3">=</span><span class="s4">&quot;Вес&quot;</span><span class="s3">, </span><span class="s1">color</span><span class="s3">=</span><span class="s4">'orange'</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">plot</span><span class="s3">(</span><span class="s1">char</span><span class="s3">[</span><span class="s4">'name'</span><span class="s3">].</span><span class="s1">head</span><span class="s3">(</span><span class="s5">7</span><span class="s3">), </span><span class="s1">char</span><span class="s3">[</span><span class="s4">'birth_year'</span><span class="s3">].</span><span class="s1">head</span><span class="s3">(</span><span class="s5">7</span><span class="s3">), </span><span class="s1">marker</span><span class="s3">=</span><span class="s4">'*'</span><span class="s3">, </span><span class="s1">markersize</span><span class="s3">=</span><span class="s5">10</span><span class="s3">, </span><span class="s1">label</span><span class="s3">=</span><span class="s4">&quot;Год рождения&quot;</span><span class="s3">, </span><span class="s1">color</span><span class="s3">=</span><span class="s4">'lime'</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">title</span><span class="s3">(</span><span class="s4">&quot;Статистика среди персонажей </span><span class="s2">\&quot;</span><span class="s4">Звездных войн</span><span class="s2">\&quot;</span><span class="s4">&quot;</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">xlabel</span><span class="s3">(</span><span class="s4">&quot;Имена персонажей&quot;</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">ylabel</span><span class="s3">(</span><span class="s4">&quot;Числовые соотношения&quot;</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">legend</span><span class="s3">()</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">show</span><span class="s3">()</span>
+<span class="s0">#%% md 
+</span><span class="s1">Вывод: визуалированы данные о росте, весе и годе рождения первых семерых персонажей в виде линейного графика. Графики объединены в одну диаграмму. 
+</span><span class="s0">#%% md 
+</span><span class="s1">Представление первых семи данных о росте, весе и годе рождения персонажей в виде столбчатой диаграммы 
+</span><span class="s0">#%% md 
+</span><span class="s1">Берём абсолютно те же данные, но представляем их немного по-другому, т. е. через метод bar, а не plot. Параметр alpha был использован для слияния графиков.  
+</span><span class="s0">#%% 
+</span><span class="s1">plt</span><span class="s3">.</span><span class="s1">figure</span><span class="s3">(</span><span class="s1">figsize</span><span class="s3">=(</span><span class="s5">10</span><span class="s3">, </span><span class="s5">5</span><span class="s3">))</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">bar</span><span class="s3">(</span><span class="s1">char</span><span class="s3">[</span><span class="s4">'name'</span><span class="s3">].</span><span class="s1">head</span><span class="s3">(</span><span class="s5">7</span><span class="s3">), </span><span class="s1">char</span><span class="s3">[</span><span class="s4">'height'</span><span class="s3">].</span><span class="s1">head</span><span class="s3">(</span><span class="s5">7</span><span class="s3">), </span><span class="s1">label</span><span class="s3">=</span><span class="s4">&quot;Рост&quot;</span><span class="s3">, </span><span class="s1">color</span><span class="s3">=</span><span class="s4">'sienna'</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">bar</span><span class="s3">(</span><span class="s1">char</span><span class="s3">[</span><span class="s4">'name'</span><span class="s3">].</span><span class="s1">head</span><span class="s3">(</span><span class="s5">7</span><span class="s3">), </span><span class="s1">char</span><span class="s3">[</span><span class="s4">'mass'</span><span class="s3">].</span><span class="s1">head</span><span class="s3">(</span><span class="s5">7</span><span class="s3">), </span><span class="s1">label</span><span class="s3">=</span><span class="s4">&quot;Вес&quot;</span><span class="s3">, </span><span class="s1">color</span><span class="s3">=</span><span class="s4">'indigo'</span><span class="s3">, </span><span class="s1">alpha</span><span class="s3">= </span><span class="s5">0.5</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">bar</span><span class="s3">(</span><span class="s1">char</span><span class="s3">[</span><span class="s4">'name'</span><span class="s3">].</span><span class="s1">head</span><span class="s3">(</span><span class="s5">7</span><span class="s3">), </span><span class="s1">char</span><span class="s3">[</span><span class="s4">'birth_year'</span><span class="s3">].</span><span class="s1">head</span><span class="s3">(</span><span class="s5">7</span><span class="s3">), </span><span class="s1">label</span><span class="s3">=</span><span class="s4">&quot;Год рождения&quot;</span><span class="s3">, </span><span class="s1">color</span><span class="s3">=</span><span class="s4">'darkolivegreen'</span><span class="s3">, </span><span class="s1">alpha</span><span class="s3">= </span><span class="s5">0.5</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">title</span><span class="s3">(</span><span class="s4">&quot;Статистика среди персонажей </span><span class="s2">\&quot;</span><span class="s4">Звездных войн</span><span class="s2">\&quot;</span><span class="s4">&quot;</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">xlabel</span><span class="s3">(</span><span class="s4">&quot;Имена персонажей&quot;</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">ylabel</span><span class="s3">(</span><span class="s4">&quot;Числовые соотношения&quot;</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">legend</span><span class="s3">()</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">show</span><span class="s3">()</span>
+<span class="s0">#%% md 
+</span><span class="s1">Вывод: визуалированы данные о росте, весе и годе рождения первых семерых персонажей в виде столбчатой диаграммы. Все диаграммы объединены в одну общую диаграмму. 
+</span><span class="s0">#%% md 
+</span><span class="s1">Представление данных о поле персонажей в виде круговой диаграммы 
+</span><span class="s0">#%% md 
+</span><span class="s1">Для того, чтобы получить количество данных, допустим с названием &quot;male&quot;, мы сначала фильтруем данные в таблице, где находятся сведения о поле. Затем создаём списки со значением количества персонажей с мужским и женским полом, с учетом персонажей, у которых пол вовсе не указан. Для расчета количества данных был использован метод count(). Для создания круговой диаграммы нужно использовать метод pie(). Туда мы вносим список значений, сопоставляемых друг с другом, список названий этих значений, дополнительный параметр autopct, который демонстрирует значения в процентах, и список цветов каждого &quot;кусочка&quot;.  
+</span><span class="s0">#%% 
+</span><span class="s1">male </span><span class="s3">= </span><span class="s1">char</span><span class="s3">[</span><span class="s1">char</span><span class="s3">[</span><span class="s4">'sex'</span><span class="s3">] == </span><span class="s4">'male'</span><span class="s3">][</span><span class="s4">'sex'</span><span class="s3">]</span>
+<span class="s1">female </span><span class="s3">= </span><span class="s1">char</span><span class="s3">[</span><span class="s1">char</span><span class="s3">[</span><span class="s4">'sex'</span><span class="s3">] == </span><span class="s4">'female'</span><span class="s3">][</span><span class="s4">'sex'</span><span class="s3">]</span>
+<span class="s1">nogend </span><span class="s3">= </span><span class="s1">char</span><span class="s3">[</span><span class="s1">char</span><span class="s3">[</span><span class="s4">'sex'</span><span class="s3">] == </span><span class="s4">'none'</span><span class="s3">][</span><span class="s4">'sex'</span><span class="s3">]</span>
+
+<span class="s1">gender </span><span class="s3">= [</span><span class="s1">male</span><span class="s3">.</span><span class="s1">count</span><span class="s3">(), </span><span class="s1">female</span><span class="s3">.</span><span class="s1">count</span><span class="s3">(), </span><span class="s1">nogend</span><span class="s3">.</span><span class="s1">count</span><span class="s3">()]</span>
+<span class="s1">labels </span><span class="s3">= [</span><span class="s4">&quot;Мужчины&quot;</span><span class="s3">, </span><span class="s4">&quot;Женщины&quot;</span><span class="s3">, </span><span class="s4">&quot;Неизвестно&quot;</span><span class="s3">]</span>
+
+
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">pie</span><span class="s3">(</span><span class="s1">gender</span><span class="s3">, </span><span class="s1">labels</span><span class="s3">= </span><span class="s1">labels</span><span class="s3">, </span><span class="s1">autopct</span><span class="s3">=</span><span class="s4">'%1.1f%%'</span><span class="s3">, </span><span class="s1">colors</span><span class="s3">= [</span><span class="s4">'steelblue'</span><span class="s3">, </span><span class="s4">'lightpink'</span><span class="s3">, </span><span class="s4">'darkseagreen'</span><span class="s3">])</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">title</span><span class="s3">(</span><span class="s4">&quot;Соотношение пола персонажей </span><span class="s2">\&quot;</span><span class="s4">Звёздных войн</span><span class="s2">\&quot;</span><span class="s4">&quot;</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">show</span><span class="s3">()</span>
+<span class="s0">#%% md 
+</span><span class="s1">Вывод: визуалирована статистика с полом персонажей в виде круглой диаграммы. 
+</span><span class="s0">#%% md 
+</span><span class="s1">Диаграмма по видам персонажей была выведена в терминал таким же образом, как и предыдущая 
+</span><span class="s0">#%% 
+</span><span class="s1">humans </span><span class="s3">= </span><span class="s1">char</span><span class="s3">[</span><span class="s1">char</span><span class="s3">[</span><span class="s4">'species'</span><span class="s3">] == </span><span class="s4">'Human'</span><span class="s3">][</span><span class="s4">'species'</span><span class="s3">]</span>
+<span class="s1">droids </span><span class="s3">= </span><span class="s1">char</span><span class="s3">[</span><span class="s1">char</span><span class="s3">[</span><span class="s4">'species'</span><span class="s3">] == </span><span class="s4">'Droid'</span><span class="s3">][</span><span class="s4">'species'</span><span class="s3">]</span>
+
+<span class="s1">species </span><span class="s3">= [</span><span class="s1">humans</span><span class="s3">.</span><span class="s1">count</span><span class="s3">(), </span><span class="s1">droids</span><span class="s3">.</span><span class="s1">count</span><span class="s3">()]</span>
+<span class="s1">labels </span><span class="s3">= [</span><span class="s4">&quot;Люди&quot;</span><span class="s3">, </span><span class="s4">&quot;Дроиды&quot;</span><span class="s3">]</span>
+
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">pie</span><span class="s3">(</span><span class="s1">species</span><span class="s3">, </span><span class="s1">labels</span><span class="s3">= </span><span class="s1">labels</span><span class="s3">, </span><span class="s1">autopct</span><span class="s3">=</span><span class="s4">'%1.1f%%'</span><span class="s3">, </span><span class="s1">colors</span><span class="s3">= [</span><span class="s4">'moccasin'</span><span class="s3">, </span><span class="s4">'slategray'</span><span class="s3">])</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">title</span><span class="s3">(</span><span class="s4">&quot;Соотношение видов персонажей </span><span class="s2">\&quot;</span><span class="s4">Звёздных войн</span><span class="s2">\&quot;</span><span class="s4">&quot;</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">show</span><span class="s3">()</span>
+<span class="s0">#%% md 
+</span><span class="s1">Вывод: визуалирована статистика с видами персонажей в виде круглой диаграммы. 
+</span><span class="s0">#%% md 
+</span><span class="s1">Представление данных в виде диаграммы рассеивания 
+</span><span class="s0">#%% md 
+</span><span class="s1">Теперь приступаем к визуализации данных в виде диаграмм рассеивания. Для того, чтобы это реализовать, нужно использовать метод scatter(). Туда необходимо ввести данные, которые будут соотнесены между собой. Цвет вводить необязательно, но тогда диаграмма будет представлена рандомным цветом. 
+</span><span class="s0">#%% 
+</span><span class="s1">plt</span><span class="s3">.</span><span class="s1">figure</span><span class="s3">(</span><span class="s1">figsize</span><span class="s3">=(</span><span class="s5">10</span><span class="s3">, </span><span class="s5">6</span><span class="s3">))</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">scatter</span><span class="s3">(</span><span class="s1">char</span><span class="s3">[</span><span class="s4">'height'</span><span class="s3">], </span><span class="s1">char</span><span class="s3">[</span><span class="s4">'mass'</span><span class="s3">], </span><span class="s1">color</span><span class="s3">=</span><span class="s4">'goldenrod'</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">title</span><span class="s3">(</span><span class="s4">&quot;Соотношение между весом и ростом персонажей из </span><span class="s2">\&quot;</span><span class="s4">Звёздных войн</span><span class="s2">\&quot;</span><span class="s4">&quot;</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">xlabel</span><span class="s3">(</span><span class="s4">&quot;Рост&quot;</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">ylabel</span><span class="s3">(</span><span class="s4">&quot;Вес&quot;</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">show</span><span class="s3">()</span>
+<span class="s0">#%% md 
+</span><span class="s1">Вывод: визуалировано соотношение между весом и ростом персонажей в виде диаграммы рассеивания. 
+</span><span class="s0">#%% md 
+</span><span class="s1">Вторая диаграмма была создана таким же образом, что и предыдущая. 
+</span><span class="s0">#%% 
+</span><span class="s1">plt</span><span class="s3">.</span><span class="s1">figure</span><span class="s3">(</span><span class="s1">figsize</span><span class="s3">=(</span><span class="s5">6</span><span class="s3">, </span><span class="s5">6</span><span class="s3">))</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">scatter</span><span class="s3">(</span><span class="s1">char</span><span class="s3">[</span><span class="s4">'birth_year'</span><span class="s3">], </span><span class="s1">char</span><span class="s3">[</span><span class="s4">'height'</span><span class="s3">], </span><span class="s1">color</span><span class="s3">=</span><span class="s4">'cadetblue'</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">title</span><span class="s3">(</span><span class="s4">&quot;Соотношение между годом рождения и ростом персонажей из </span><span class="s2">\&quot;</span><span class="s4">Звёздных войн</span><span class="s2">\&quot;</span><span class="s4">&quot;</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">xlabel</span><span class="s3">(</span><span class="s4">&quot;Год рождения&quot;</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">ylabel</span><span class="s3">(</span><span class="s4">&quot;Рост&quot;</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">show</span><span class="s3">()</span>
+<span class="s0">#%% md 
+</span><span class="s1">Вывод: визуалировано соотношение между год рождения и ростом персонажей в виде диаграммы рассеивания. 
+</span><span class="s0">#%% md 
+</span><span class="s1">Представление данных в виде гистограммы 
+</span><span class="s0">#%% md 
+</span><span class="s1">Для того, чтобы представить данные в виде гистограммы, необходимо вызвать метод hist(). Здесь рассматривается статистика какого-нибудь определённого столбца с данными, поэтому в начале объявляется этот столбец, а потом размер диапазона между значениями, основной цвет, цвет краев и название гистограммы. Дальше все то же самое, что и было в линейном графике. 
+</span><span class="s0">#%% 
+</span><span class="s1">plt</span><span class="s3">.</span><span class="s1">figure</span><span class="s3">(</span><span class="s1">figsize</span><span class="s3">=(</span><span class="s5">10</span><span class="s3">, </span><span class="s5">6</span><span class="s3">))</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">hist</span><span class="s3">(</span><span class="s1">char</span><span class="s3">[</span><span class="s4">'birth_year'</span><span class="s3">], </span><span class="s1">bins</span><span class="s3">=</span><span class="s5">50</span><span class="s3">, </span><span class="s1">color</span><span class="s3">=</span><span class="s4">'lavender'</span><span class="s3">, </span><span class="s1">edgecolor</span><span class="s3">=</span><span class="s4">'black'</span><span class="s3">, </span><span class="s1">label</span><span class="s3">=</span><span class="s4">'Распределение года рождения персонажей из </span><span class="s2">\&quot;</span><span class="s4">Звёздных войн</span><span class="s2">\&quot;</span><span class="s4">'</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">legend</span><span class="s3">()</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">show</span><span class="s3">()</span>
+<span class="s0">#%% md 
+</span><span class="s1">Вывод: визуалирована статистика годов рождения персонажей в виде гистораммы. 
+</span><span class="s0">#%% 
+</span><span class="s1">plt</span><span class="s3">.</span><span class="s1">figure</span><span class="s3">(</span><span class="s1">figsize</span><span class="s3">=(</span><span class="s5">10</span><span class="s3">, </span><span class="s5">6</span><span class="s3">))</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">hist</span><span class="s3">(</span><span class="s1">char</span><span class="s3">[</span><span class="s4">'mass'</span><span class="s3">], </span><span class="s1">bins</span><span class="s3">=</span><span class="s5">50</span><span class="s3">, </span><span class="s1">color</span><span class="s3">=</span><span class="s4">'thistle'</span><span class="s3">, </span><span class="s1">edgecolor</span><span class="s3">=</span><span class="s4">'black'</span><span class="s3">, </span><span class="s1">label</span><span class="s3">=</span><span class="s4">'Распределение веса персонажей из </span><span class="s2">\&quot;</span><span class="s4">Звёздных войн</span><span class="s2">\&quot;</span><span class="s4">'</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">legend</span><span class="s3">()</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">show</span><span class="s3">()</span>
+<span class="s0">#%% md 
+</span><span class="s1">Вывод: визуалирована статистика веса персонажей в виде гистораммы. 
+</span><span class="s0">#%% 
+</span><span class="s1">plt</span><span class="s3">.</span><span class="s1">figure</span><span class="s3">(</span><span class="s1">figsize</span><span class="s3">=(</span><span class="s5">10</span><span class="s3">, </span><span class="s5">6</span><span class="s3">))</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">hist</span><span class="s3">(</span><span class="s1">char</span><span class="s3">[</span><span class="s4">'height'</span><span class="s3">], </span><span class="s1">bins</span><span class="s3">=</span><span class="s5">50</span><span class="s3">, </span><span class="s1">color</span><span class="s3">=</span><span class="s4">'skyblue'</span><span class="s3">, </span><span class="s1">edgecolor</span><span class="s3">=</span><span class="s4">'black'</span><span class="s3">, </span><span class="s1">label</span><span class="s3">=</span><span class="s4">'Распределение роста персонажей из </span><span class="s2">\&quot;</span><span class="s4">Звёздных войн</span><span class="s2">\&quot;</span><span class="s4">'</span><span class="s3">)</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">legend</span><span class="s3">()</span>
+<span class="s1">plt</span><span class="s3">.</span><span class="s1">show</span><span class="s3">()</span>
+<span class="s0">#%% md 
+</span><span class="s1">Вывод: визуалирована статистика роста персонажей в виде гистораммы. 
+</span><span class="s0">#%% md 
+</span><span class="s1">Общий вывод: в ходе выполнения практической работы были визуализированы некоторые наборы данных, взятые из датасета и изучен модуль pyplot из библиотеки matplotlib.</span></pre>
+</body>
+</html>
